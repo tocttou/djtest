@@ -1,0 +1,4 @@
+.sass-cache
+.idea
+static/CACHE
+*/*.pyc

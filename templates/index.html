@@ -1,0 +1,169 @@
+{% load compress %}
+{% load staticfiles %}
+<html>
+<head>
+    <title>{{ title }}</title>
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.css" />
+    {% compress css %}
+        <link rel="stylesheet" type="text/scss" href="{% static 'css/styles.scss' %}" />
+    {% endcompress %}
+</head>
+<body>
+
+<!-- modal code -->
+<div id="function-modal" class="ui small modal">
+    <i class="close icon"></i>
+
+    <div id="modal-heading" class="header">
+        Select an action
+    </div>
+
+    <div class="ui center aligned padded grid">
+        <div class="sixteen wide column">
+
+            <div class="ui top attached tabular menu">
+                <a id="function" class="item active">
+                    Function
+                </a>
+                <a id="join" class="item">
+                    Join
+                </a>
+            </div>
+
+            <!-- switchable code -->
+
+            <div id="#switchable" class="ui bottom attached segment">
+                <h2 class="ui header">
+                    <i id="menu-header-icon" class="play circle icon"></i>
+                    <div id="menu-header" class="content">
+                        Apply a function
+                    </div>
+                </h2>
+
+                <div class="function-dropdown">
+                    <br>
+                    <select class="ui dropdown functionmenu">
+                        <option selected value="">Filter</option>
+                        <option value="grayscale">Grayscale</option>
+                        <option value="gBlur">Gaussian Blur</option>
+                        <option value="mBlur">Median Blur</option>
+                        <option value="not">Bitwise Not</option>
+                        <option value="canny">Canny Edge (auto)</option>
+                        <option value="laplacian">Laplacian filter</option>
+                    </select>
+                </div>
+
+
+                <div class="join-menu">
+                    <br>
+                    <div class="ui input">
+                        <input id="id-to-join" placeholder="Enter ID to join" type="text">
+                    </div>
+                </div>
+                <div class="join-menu">
+                    <br>
+                    <h4 class="ui horizontal divider header"> Join Type </h4>
+                </div>
+                <div class="join-menu">
+                    <br>
+                    <select class="ui dropdown jointypemenu">
+                        <option selected value="">Join Type</option>
+                        <option value="ADD">ADD</option>
+                        <option value="XOR">XOR</option>
+                        <option value="AND">AND</option>
+                        <option value="OR">OR</option>
+                    </select>
+                </div>
+
+
+            </div>
+
+            <!-- -->
+
+        </div>
+    </div>
+
+    <div class="actions">
+        <div class="ui red deny button">
+            Cancel
+        </div>
+        <div id="go-forward" class="ui positive right labeled icon button">
+            Accept
+            <i class="checkmark icon"></i>
+        </div>
+    </div>
+</div>
+
+<!-- modal code ends -->
+
+<!-- instructions modal code -->
+<div id="instructions-modal" class="ui basic modal">
+    <i class="close icon"></i>
+    <div class="header">
+        Instructions
+    </div>
+    <div class="image content">
+        <div class="image">
+            <i class="info circle icon"></i>
+        </div>
+        <div class="description">
+            <p>1. Click on the plus button and upload the image</p>
+            <p>2. Single click on a node to preview it in the side pane</p>
+            <p>3. Double click on a node to open the functions menu</p>
+            <p>4. Select a node and press delete button to delete it</p>
+            <p>5. Drag and drop the nodes for clarity</p>
+            <p>6. Click on '>' icon to evaluate the current graph</p>
+            <p>7. Only jpg files are supported in this demo!</p>
+        </div>
+    </div>
+    <div class="actions">
+        <div id="got-it" class="two fluid ui inverted buttons">
+            <div class="ui green basic button">
+                <i class="checkmark icon"></i>
+                Got it
+            </div>
+        </div>
+    </div>
+</div>
+<!-- instructions modal code ends -->
+
+<div class="ui equal width three column divided padded center aligned stackable grid">
+    <div class="stretched row maincontent">
+        <div class="twelve wide column">
+            <div class="ui equal width one column divided padded center aligned stackable grid">
+                <div class="stretched row">
+                    <div id="diagramHolder" class="ui segment">
+                        <div id="cvDiagramDiv" style="width:70vw; height:90vh; background-color: #DAE4E4;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="side-panel" class="four wide column">
+            <div id="imageHolder" class="ui segment">
+                <img id="originShow" />
+                <div id="id-display" class="ui segment">
+                </div>
+            </div>
+            <div class="ui active small inline loader loading-icon"></div>
+            <div class="ui active inline loader loading-icon"></div>
+            <div class="ui active large inline loader loading-icon"></div>
+        </div>
+    </div>
+</div>
+
+<div id="loader" class="ui grid">
+    <a href="#">
+        <i id="loadImage" class="plus circle icon"></i>
+        <input type='file' name="upload" id="imageInput" onchange="uploadAndDisplay(this);" />
+    </a>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.1/jquery.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/semantic.min.js" ></script>
+{% compress js %}
+    <script src="{% static "javascript/go.js" %}"></script>
+    <script src="{% static "javascript/app.js" %}" ></script>
+    <script src="{% static "javascript/format.js" %}" ></script>
+{% endcompress %}
+</body>
+</html>

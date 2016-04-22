@@ -1,0 +1,45 @@
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  border: 0;
+  outline: none;
+}
+
+.disableClick {
+  pointer-events: none;
+}
+
+#loadImage {
+  font-size: 100px;
+  color: #e74c3c;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+#imageHolder {
+  height: 70vh;
+}
+
+.join-menu {
+  display: none;
+}
+
+#side-panel {
+  visibility: hidden;
+}
+
+.loading-icon {
+  visibility: hidden;
+}
+
+#imageInput {
+  display: none;
+}
