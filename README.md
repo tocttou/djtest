@@ -35,9 +35,11 @@ This software is Free Software licensed under GPL v3. Please see the included li
 
 EXCLUDED CODE: The code described below and contained in the DJTEST Source Code release is not part of the Program covered by the GPL v3 and is expressly excluded from its terms.  You are solely responsible for obtaining from the copyright holder a license for such code and complying with the applicable license terms.
 
-GoJS
+### GoJS
 ---------------------------------------------------------------------------
 file(s): static/javascript/go.js
+
 License: http://gojs.net/latest/doc/license.html
+
 This application uses an evaluation version of the [GoJS library](http://gojs.net/latest/index.html). This version cannot be used in production without obtaining an appropriate license.
 
